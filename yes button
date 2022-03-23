@@ -1,0 +1,119 @@
+package banter;
+
+import java.io.IOException;
+import java.io.PrintStream;
+import java.net.Socket;
+import java.util.Scanner;
+import java.awt.BorderLayout;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.util.regex.*;
+
+
+public class Banter extends JFrame{
+    
+    
+
+    public Banter(){
+        
+        
+        super("Search");
+        JPanel panel1 = new JPanel();
+        GridBagConstraints Jcon = new GridBagConstraints();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        JButton button1 = new JButton("User");        
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+
+                JFrame frame2 = new JFrame("User");   
+                    frame2.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            frame2.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+            
+            Object[] options = {"Yes",
+                                "Cancel",
+                                "Minimise"};
+            int n = JOptionPane.showOptionDialog(frame2,
+                "Would you like to exit?",
+                "Close program",
+            JOptionPane.YES_NO_CANCEL_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            
+            null,
+            options,
+            options[2]);
+                    if(n == JOptionPane.YES_OPTION){
+                        
+                        System.exit(0);
+                        
+                    }else if(n == JOptionPane.NO_OPTION){
+                        
+                    }else if(n == JOptionPane.CANCEL_OPTION){
+                        frame2.setExtendedState(frame2.ICONIFIED);
+                    }
+            }});
+                    frame2.setVisible(true);
+                    setVisible(false);
+            }
+           
+        });
+     
+        JButton button2 = new JButton("Admin");        
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame3 = new JFrame("User");
+                    frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    GridBagConstraints Jcon2 = new GridBagConstraints();
+
+                    JLabel JL1 = new JLabel("Username");
+                    JLabel JL2 = new JLabel("Password");
+                    JTextField TF1 = new JTextField(10);
+                    JPasswordField PF1 = new JPasswordField(15);
+
+
+                    JButton b1 =  new JButton ("Enter");
+                   
+                    JPanel pane1 = new JPanel();
+                    Jcon2.gridx = 0;
+                   Jcon2.gridy = 0;
+                    pane1.add(JL1,Jcon2);
+                    Jcon2.gridx = 0;
+                    Jcon2.gridy = 1;
+                Component aTF = null;
+                    pane1.add(aTF,Jcon2);
+                    Jcon2.gridx = 1;
+                    Jcon2.gridy = 0;
+                    pane1.add(JL2,Jcon2);
+                    Jcon2.gridx = 1;
+                    Jcon2.gridy = 1;
+                    pane1.add(JL2,Jcon2);
+                    frame3.add(pane1);
+                    pane1.add(b1);
+                    frame3.pack();
+                    frame3.setVisible(true);
+                    setVisible(false);
+            }});
+ 
+        Jcon.gridx = 0;
+        Jcon.gridy = 0;
+        pane1.add(button1,Jcon);
+        Jcon.gridx = 0;
+        Jcon.gridy = 1;
+        pane1.add(button1,Jcon);
+        add(pane1);
+        pack();
+        setVisible(true);
+       
+}
+public static void main(String args[]){
+        
+      new Banter();
+        
+    }
+}
